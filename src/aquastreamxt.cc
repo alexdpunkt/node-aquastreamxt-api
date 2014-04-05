@@ -1,3 +1,10 @@
+/**
+ * Aquastream Node Module
+ *
+ * @package node-aquastreamxt-api
+ * @author Alexander Dick <alex@dick.at>
+ */
+
 #include <node.h>
 #include <v8.h>
 #include <sys/stat.h>
@@ -67,7 +74,7 @@ Handle<Value> Aquastream::GetReport(const Arguments& args) {
 	}
 
 	Aquastream* aquastream 	= ObjectWrap::Unwrap<Aquastream>(args.This());
-	int reportId 			= args[0]->NumberValue();
+	int reportId = args[0]->NumberValue();
 
 	// get settings
 	Handle<Object> settings = IO::getSettings(Number::New(aquastream->handle), Number::New(reportId));
@@ -104,11 +111,11 @@ Handle<Value> Aquastream::SetReport(const Arguments& args) {
 		return scope.Close(Undefined());
 	}
 
-	Aquastream* aquastream 		= ObjectWrap::Unwrap<Aquastream>(args.This());
-	int reportId 				= args[0]->NumberValue();
+	Aquastream* aquastream = ObjectWrap::Unwrap<Aquastream>(args.This());
+	int reportId = args[0]->NumberValue();
 
 	Handle<Value> returnValue;
-	Handle<Object> data 		= args[1]->ToObject();
+	Handle<Object> data = args[1]->ToObject();
 
 	switch(reportId) {
 		case 6:

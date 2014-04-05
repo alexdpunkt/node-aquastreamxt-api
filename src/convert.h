@@ -1,3 +1,8 @@
+/**
+ * @package node-aquastreamxt-api
+ * @author Alexander Dick <alex@dick.at>
+ */
+
 #ifndef CONVERT_H
 #define CONVERT_H
 
@@ -35,21 +40,40 @@ class Convert {
 
 		static double controllerOutScale(int32_t value);
 
-    private:
+	private:
 
-		static const int 		CPU_CLOCK 			= 12000000; 	// clock of the pump
-		static const int 		TIMER_PUMP 			= 1500000; 		// timer frequency / Timer Frequenz (CPU_CLOCK / 8)
+		// clock freq of the pump
+		static const int CPU_CLOCK = 12000000;
 
-		static const int 		CONTROLLER_TIMER 	= 100; 			// Controller cycle time 100ms
-		static const double 	LIMITER_SCALE 		= 0.01333155;	// Frequency Limiter scale
-		static const int 		TIMER_RPM 			= 46875;		// Scale for Fan RPM
-		static const int		MIN_RPM				= 300000;		// Minimum Fan RPM
-		static const int		MIN_FLOW 			= 600000;		// Minimum Fan RPM
+		// timer frequency (CPU_CLOCK / 8)
+		static const int TIMER_PUMP = 1500000;
 
-		static const int 		SCALE_TEMPERATURE 	= 100; 			// Scale of Temperature
-		static const double 	SCALE_12V 			= 61.00;		// Skalierungsfaktor 12V
-		static const double 	SCALE_FAN_OUT 		= 63.00;		// Skalierungsfaktor Fanout
-		static const double 	SCALE_PUMP_CURRENT	= 1.6;			// Skalierungsfaktor Pumpenstrom
+		// Controller cycle time 100ms
+		static const int CONTROLLER_TIMER = 100;
+
+		// Frequency Limiter scale
+		static const double LIMITER_SCALE = 0.01333155;
+
+		// Scale for Fan RPM
+		static const int TIMER_RPM = 46875;
+
+		// Minimum Fan RPM
+		static const int MIN_RPM = 300000;
+
+		// Minimum Fan RPM
+		static const int MIN_FLOW = 600000;
+
+		// Scale of Temperature
+		static const int SCALE_TEMPERATURE = 100;
+
+		// scale factor 12V
+		static const double SCALE_12V = 61.00;
+
+		// scale factor Fanout
+		static const double SCALE_FAN_OUT = 63.00;
+
+		// scale factor pump current
+		static const double SCALE_PUMP_CURRENT = 1.6;
 
 };
 

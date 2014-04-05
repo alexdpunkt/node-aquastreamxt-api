@@ -1,3 +1,10 @@
+/**
+ * Some converting functions
+ *
+ * @package node-aquastreamxt-api
+ * @author Alexander Dick <alex@dick.at>
+ */
+
 #include "convert.h"
 
 double Convert::temperature(u_int16_t temperature) {

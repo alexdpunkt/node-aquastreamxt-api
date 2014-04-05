@@ -1,3 +1,10 @@
+/**
+ * Functions for communicating with the device
+ *
+ * @package node-aquastreamxt-api
+ * @author Alexander Dick <alex@dick.at>
+ */
+
 #include <node.h>
 #include <v8.h>
 
@@ -84,9 +91,9 @@ int IO::getFeatureReport(
 	unsigned char *buffer
 ) {
 
-	struct hiddev_report_info 		reportInfo;
-	struct hiddev_field_info 		fieldInfo;
-	struct hiddev_usage_ref_multi 	usageRef;
+	struct hiddev_report_info       reportInfo;
+	struct hiddev_field_info        fieldInfo;
+	struct hiddev_usage_ref_multi   usageRef;
 
 	fieldInfo.report_type 	= HID_REPORT_TYPE_FEATURE;
 	fieldInfo.report_id 	= reportId;
@@ -238,15 +245,6 @@ Handle<Object> IO::getData(Local<Value> handle, Local<Value> reportId, Handle<Ob
 	// Current values
 	Local<Object> current = Object::New();
 
-		/* Conversion is now done on the frontend
-		current->Set(String::NewSymbol("flow"), Number::New(
-			Convert::flow(
-				report->flow,
-				SENSOR_FLOW_EDGES,
-				SENSOR_FLOW_IMPULSES_PER_LITER
-			)
-		));
-		*/
 		current->Set(String::NewSymbol("flow"), Number::New(report->flow));
 
 		current->Set(String::NewSymbol("frequency"), Integer::New(Convert::frequency(report->frequency)));

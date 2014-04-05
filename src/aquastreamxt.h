@@ -1,3 +1,7 @@
+/**
+ * @package node-aquastreamxt-api
+ * @author Alexander Dick <alex@dick.at>
+ */
 
 #ifndef AQUASTREAMXT_H
 #define AQUASTREAMXT_H

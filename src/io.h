@@ -1,3 +1,8 @@
+/**
+ * @package node-aquastreamxt-api
+ * @author Alexander Dick <alex@dick.at>
+ */
+
 #ifndef IO_H
 #define IO_H
 
@@ -9,11 +14,7 @@ class IO {
 
 	private:
 
-		static const int REPORT_LENGTH 						= 512;
-
-		// TODO: make dynamic via web interface
-		static const int SENSOR_FLOW_EDGES					= 8;
-		static const int SENSOR_FLOW_IMPULSES_PER_LITER 	= 169;
+		static const int REPORT_LENGTH = 512;
 
 	public:
 
@@ -88,7 +89,7 @@ class IO {
 			u_int8_t pumpMode_dummy:2;
 			u_int8_t pumpModeB;
 
-			u_int8_t sensorBridge; // enum tSensorBridge
+			u_int8_t sensorBridge;
 
 			u_int8_t measureFanEdges;
 			u_int8_t measureFlowEdges;
