@@ -1,4 +1,4 @@
-#Node.js addon for Aquastream XT
+#Aquastream XT addon for NodeJS
 ##Introduction
 
 This is a native Node.js addon for communicating with the Aquastream XT device.
