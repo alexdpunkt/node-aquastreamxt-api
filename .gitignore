@@ -1,0 +1,14 @@
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+.idea
+
+.idea/
+build/
+node_modules/
+
+npm-debug.log

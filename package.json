@@ -1,0 +1,16 @@
+{
+	"name": "node-aquastreamxt-api",
+	"version": "0.0.1",
+	"author": "Alexander Dick",
+	"license": "BSD",
+	"description": "Node.js extension for communication with Aquastream XT USB device",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/adick/node-aquastreamxt-api.git"
+	},
+	"scripts": {
+		"preinstall": "node-gyp configure && node-gyp build",
+		"preuninstall": "rm -rf build/*"
+	},
+	"main": "build/Release/aquastreamxt_api.node"
+}
