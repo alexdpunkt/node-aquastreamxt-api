@@ -47,11 +47,11 @@ Handle<Value> Aquastream::New(const Arguments& args) {
 
 	HandleScope scope;
 
-	Aquastream* aquastream	= new Aquastream();
-	aquastream->vendorId 	= args[0]->NumberValue();
-	aquastream->productId 	= args[1]->NumberValue();
+	Aquastream* aquastream = new Aquastream();
+	aquastream->vendorId = args[0]->NumberValue();
+	aquastream->productId = args[1]->NumberValue();
 
-	aquastream->handle 		= IO::openDevice(aquastream->vendorId, aquastream->productId);
+	aquastream->handle = IO::openDevice(aquastream->vendorId, aquastream->productId);
 
 	aquastream->Wrap(args.This());
 

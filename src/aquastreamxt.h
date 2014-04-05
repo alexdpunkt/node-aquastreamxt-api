@@ -8,7 +8,7 @@
 
 #include <node.h>
 
-class Aquastream : public node::ObjectWrap {
+class Aquastream: public node::ObjectWrap {
 
 	public:
 		static void Init(v8::Handle<v8::Object> target);

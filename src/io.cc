@@ -81,8 +81,8 @@ int IO::openDevice(int vendorId, int productId) {
 
 /**
  * Gets a HID feature report
- * @param int handle				The device handle
- * @param int reportId				The requested Report number
+ * @param int handle The device handle
+ * @param int reportId The requested Report number
  * @param unsigned char *buffer
  */
 int IO::getFeatureReport(
@@ -95,11 +95,11 @@ int IO::getFeatureReport(
 	struct hiddev_field_info        fieldInfo;
 	struct hiddev_usage_ref_multi   usageRef;
 
-	fieldInfo.report_type 	= HID_REPORT_TYPE_FEATURE;
-	fieldInfo.report_id 	= reportId;
-	fieldInfo.field_index 	= 0;
+	fieldInfo.report_type           = HID_REPORT_TYPE_FEATURE;
+	fieldInfo.report_id             = reportId;
+	fieldInfo.field_index           = 0;
 
-	int ret 		 = ioctl(handle, HIDIOCGFIELDINFO, &fieldInfo);
+	int ret = ioctl(handle, HIDIOCGFIELDINFO, &fieldInfo);
 	int reportLength = fieldInfo.maxusage;
 
 	if (reportLength > REPORT_LENGTH) {
@@ -107,15 +107,15 @@ int IO::getFeatureReport(
 		return 0;
 	}
 
-	reportInfo.report_type = HID_REPORT_TYPE_FEATURE;
-	reportInfo.report_id = reportId;
-	reportInfo.num_fields = 1;
+	reportInfo.report_type  = HID_REPORT_TYPE_FEATURE;
+	reportInfo.report_id    = reportId;
+	reportInfo.num_fields   = 1;
 
-	usageRef.uref.report_type = HID_REPORT_TYPE_FEATURE;
-	usageRef.uref.report_id = reportId;
-	usageRef.uref.field_index = 0;
-	usageRef.uref.usage_index = 0;
-	usageRef.num_values = reportLength;
+	usageRef.uref.report_type   = HID_REPORT_TYPE_FEATURE;
+	usageRef.uref.report_id     = reportId;
+	usageRef.uref.field_index   = 0;
+	usageRef.uref.usage_index   = 0;
+	usageRef.num_values         = reportLength;
 
 	// get info report
 	ret = ioctl(handle, HIDIOCGREPORT, &reportInfo);
@@ -154,13 +154,13 @@ int IO::setFeatureReport(
 	unsigned char *buffer
 ) {
 
-	struct hiddev_report_info 		reportInfo;
-	struct hiddev_field_info 		fieldInfo;
-	struct hiddev_usage_ref_multi 	usageRef;
+	struct hiddev_report_info       reportInfo;
+	struct hiddev_field_info        fieldInfo;
+	struct hiddev_usage_ref_multi   usageRef;
 
-	fieldInfo.report_type 	= HID_REPORT_TYPE_FEATURE;
-	fieldInfo.report_id 	= reportId;
-	fieldInfo.field_index 	= 0;
+	fieldInfo.report_type   = HID_REPORT_TYPE_FEATURE;
+	fieldInfo.report_id     = reportId;
+	fieldInfo.field_index   = 0;
 
 	int ret 		 = ioctl(handle, HIDIOCGFIELDINFO, &fieldInfo);
 	int reportLength = fieldInfo.maxusage;
@@ -170,15 +170,15 @@ int IO::setFeatureReport(
 		return 0;
 	}
 
-	reportInfo.report_type = HID_REPORT_TYPE_FEATURE;
-	reportInfo.report_id = reportId;
-	reportInfo.num_fields = 1;
+	reportInfo.report_type  = HID_REPORT_TYPE_FEATURE;
+	reportInfo.report_id    = reportId;
+	reportInfo.num_fields   = 1;
 
-	usageRef.uref.report_type = HID_REPORT_TYPE_FEATURE;
-	usageRef.uref.report_id = reportId;
-	usageRef.uref.field_index = 0;
-	usageRef.uref.usage_index = 0;
-	usageRef.num_values = reportLength;
+	usageRef.uref.report_type   = HID_REPORT_TYPE_FEATURE;
+	usageRef.uref.report_id     = reportId;
+	usageRef.uref.field_index   = 0;
+	usageRef.uref.usage_index   = 0;
+	usageRef.num_values         = reportLength;
 
 
 	// copy bytes to output buffer
@@ -217,8 +217,8 @@ Handle<Object> IO::getData(Local<Value> handle, Local<Value> reportId, Handle<Ob
 
 	HandleScope scope;
 
-	unsigned char *buffer 			= (unsigned char*) malloc(REPORT_LENGTH);
-	struct pumpDataReport *report 	= (struct pumpDataReport*) buffer;
+	unsigned char *buffer           = (unsigned char*) malloc(REPORT_LENGTH);
+	struct pumpDataReport *report   = (struct pumpDataReport*) buffer;
 
 	int bytes;
 
@@ -337,8 +337,8 @@ Handle<Object> IO::getSettings(Local<Value> handle, Local<Value> reportId) {
 
 	HandleScope scope;
 
-	unsigned char *buffer 				= (unsigned char*) malloc(REPORT_LENGTH);
-	struct pumpSettingsReport *report 	= (struct pumpSettingsReport*) buffer;
+	unsigned char *buffer               = (unsigned char*) malloc(REPORT_LENGTH);
+	struct pumpSettingsReport *report   = (struct pumpSettingsReport*) buffer;
 
 	int bytes;
 
@@ -470,8 +470,8 @@ Handle<Value> IO::setSettings(Local<Value> handle, Local<Value> reportId, Handle
 
 	HandleScope scope;
 
-	unsigned char *buffer 				= (unsigned char*) malloc(REPORT_LENGTH);
-	struct pumpSettingsReport *report 	= (struct pumpSettingsReport*) buffer;
+	unsigned char *buffer               = (unsigned char*) malloc(REPORT_LENGTH);
+	struct pumpSettingsReport *report   = (struct pumpSettingsReport*) buffer;
 
 	// Pump Hardware information
 	Local<Object> pumpMode = settings->Get(String::NewSymbol("pumpMode"))->ToObject();
@@ -591,7 +591,7 @@ Handle<Object> IO::getDeviceInfo(Local<Value> handle) {
 	ssize_t len = readlink(procPath, devicePath, sizeof(devicePath));
 	devicePath[len] = '\0';
 
-    info->Set(String::NewSymbol("devicePath"), String::New(devicePath));
+	info->Set(String::NewSymbol("devicePath"), String::New(devicePath));
 	// to be continued ...
 
 	return scope.Close(info);
